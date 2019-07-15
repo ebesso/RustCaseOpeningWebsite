@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="/js/client.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    
+</head>
+<body>
+
+    {{> navigationbar }}
+
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-lg-3">
+
+                <div class="col-lg-12 rounded section-header">
+                    <center><p class="section-header-text">Recent Openings</p></center>
+                </div>
+                <div class="col-lg-12 section">
+
+                    <ul>
+                        
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+
+                
+            </div>
+
+            <div class="col-lg-3">
+
+                <div class="section-header col-lg-12 rounded" style="margin-bottom: 0;">
+                    <center><p class="section-header-text">Chat</p></center>
+                </div>
+                <div class="col-lg-12 section">
+
+                    <ul id="message-history">
+                        
+                    </ul>
+
+                    <div class="input-group mb-3">
+                        
+                        {{#if user}}
+                        <input id="messageInput" type="text" class="form-control" placeholder="Enter message">
+                        {{else}}
+                        <input id="messageInput" type="text" class="form-control" placeholder="Enter message" disabled>
+                        {{/if}}
+
+                        <div class="input-group-append">
+                            {{#if user}}
+                            <button class="btn btn-outline-secondary" type="button" id="sendButton">Send</button>
+                            {{else}}
+                            <button class="btn btn-outline-secondary" type="button" id="sendButton" disabled>Send</button>
+                            {{/if}}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype HTML>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>    
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/addCase.js"></script>
+    
+
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+    {{> adminNavigationbar }}
+
+    <div class="container">
+
+        <form method="" action="" id="case-form">
+            <h2>Case Info</h2>
+            <hr>
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" id="nameInput" name="nameInput" placeholder="Name" required>
+            </div>
+
+            {{#if admin}}
+
+            <div class="form-group">
+                <label>Price</label>
+                <input type="number" class="form-control" id="priceInput" name="priceInput" placeholder="Price" required>
+            </div>
+
+            {{/if}}
+
+            <div class="form-group">
+                <label>Image</label>
+                <input type="text" class="form-control" id="imageInput" name="imageInput" placeholder="Image" required>
+            </div>
+
+            <h2>Items</h2>
+            <hr>
+
+            <ul id="item-list" class="item-list" style="list-style-type: none; padding: 0;">
+
+                <li class="item">
+
+                    <div class="form-group">
+                        <label>Item</label>
+                        <div class="input-group">
+                            <select class="form-control cost-parameter" required>
+
+                                {{#each items}}
+                                <option data-name="{{this.name}}" data-price="{{this.price}}">{{this.name}} ({{this.price}}$)</option>
+                                {{/each}}
+
+                            </select>
+
+                            <div class="input-group-append">
+                                <input type="number" class="form-control cost-parameter" placeholder="Chance" required>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </li>
+
+            </ul>
+
+            <button type="button" class="btn btn-success btn-md" id="addItemButton">Add Item</button>
+
+            <div style="margin-top: 30px;">
+                <h2>Info</h2>
+                <hr>
+
+                <p id="casePrice">Price: 0$</p>
+                
+                {{^if admin}}
+                <p id="receiveAmount">You will receive: 0$</p>
+                {{/if}}
+
+                <button type="button" id="submitButton" class="btn btn-primary btn-md">Create</button>
+            </div>
+            
+        </form>
+
+    </div>
+
+</body>
+</html>

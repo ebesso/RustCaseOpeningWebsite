@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="/css/deposit.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/deposit.js"></script>
+    
+
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    
+    
+</head>
+<body>
+
+    {{> navigationbar }}
+
+    <div class="container">
+
+        <div class="row">
+            <center>
+            <div class="col-lg-6 inventory">
+
+                <center><h2 id="inventory-title">Inventory</h2></center>
+                <hr>
+
+                {{#each items}}
+                    <img src="https://steamcommunity.com/economy/image/{{this.icon_url}}" class="item-icon" data-itemid="{{this.id}}">   
+                {{/each}}
+
+                <button class="btn btn-lg btn-success" id="depositButton">Deposit: 0$</button>
+        
+            </div>
+
+
+            </center>
+        </div>
+
+    </div>
+
+</body>
+</html>

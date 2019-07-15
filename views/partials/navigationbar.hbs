@@ -1,0 +1,34 @@
+<script src="https://kit.fontawesome.com/70748e6c5a.js"></script>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 20px; border-bottom: #f0c400 solid 3px;">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cases"><i class="fas fa-briefcase"></i> Cases</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav">
+            {{#if user}}
+            <li class="nav-item">
+                <a class="nav-link" href=""><i class="fas fa-wallet"></i> Balance: {{ getBalance user }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile"><i class="fas fa-user"></i> Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
+            {{else}}
+            <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+            {{/if}}
+                         
+        </ul>
+    </div>
+
+
+</nav>
