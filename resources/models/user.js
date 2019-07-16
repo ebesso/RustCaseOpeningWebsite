@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 
 const TradeOfferManager = require('steam-tradeoffer-manager');
-const manager = require('../../config/steam');
+const manager = require('../../steam/steam');
 
 const SteamCommunity = require('steamcommunity');
 const community = new SteamCommunity();
 
 const Item = require('./item');
+const Trade = require('./trade');
 
 var userSchema = mongoose.Schema({
 
@@ -17,26 +18,69 @@ var userSchema = mongoose.Schema({
 
 });
 
+userSchema.methods.addBalance = function(amount, cb){
+    return User.updateOne({steamid: this.steamid}, {balance: this.balance + amount}, cb);
+}
+
 userSchema.methods.getSteamProfile = function(cb){
     return community.getSteamUser(new SteamCommunity.SteamID(this.steamid), cb);
 }
 
 userSchema.methods.getSteamInventory = function(cb){
     this.getSteamProfile(function(err, user){
-        user.getInventory('252490', 2, true, cb);
+        user.getInventory('252490', 2, true, function(user, items, currencies){
+            var inventory = []
+
+            var loop = new Promise((resolve, reject) => {
+
+                items.forEach(function(item){
+
+                    Item.findOne({name: item.market_hash_name}, 'price', function(err, info){
+
+                        inventory.push({
+
+                            info: item,
+                            price: info.price
+
+                        });
+
+                        if(inventory.length == items.length) resolve();
+
+                    });
+
+                });
+
+            });
+
+            loop.then(() => {
+
+                return cb(inventory);
+
+            });
+
+        });
 
     });
 }
 
 userSchema.methods.sendTradeOffer = function(sendItems, cb){
+    var steamid = this.steamid;
     const offer = manager.createOffer(new SteamCommunity.SteamID(this.steamid));
-    this.getSteamInventory(function(err, items){
+    this.getSteamInventory(function(items){
         items.forEach(function(item){
-            if(sendItems.indexOf(item.id) > -1) offer.addTheirItem(item);
+            if(sendItems.indexOf(item.info.id) > -1) {
+                offer.addTheirItem(item.info);
+            }
         });
-        offer.send(cb);    
+        offer.send(function(err, status){
+            Trade.createDepositOffer(offer.id, steamid, cb);
+        });    
     });
 
+}
+
+userSchema.statics.getUserBySteamid = function(steamid, cb){
+    this.findOne({steamid: steamid}, 'steamid balance inventory').populate('inventory').exec(cb);
 }
 
 

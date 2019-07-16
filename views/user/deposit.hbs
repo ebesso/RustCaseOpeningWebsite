@@ -20,22 +20,27 @@
     <div class="container">
 
         <div class="row">
-            <center>
-            <div class="col-lg-6 inventory">
-
+            <div class="col-lg-12">
                 <center><h2 id="inventory-title">Inventory</h2></center>
-                <hr>
+                <hr>                
+                <div class="inventory-container row">
 
-                {{#each items}}
-                    <img src="https://steamcommunity.com/economy/image/{{this.icon_url}}" class="item-icon" data-itemid="{{this.id}}">   
-                {{/each}}
+                    {{#each items}}
+                    <div class="item-container col-lg-3" data-itemid="{{this.info.id}}" data-price="{{this.price}}">
+                        <center><img src="https://steamcommunity.com/economy/image/{{this.info.icon_url}}" class="item-icon"></center>
+                        <hr class="img-seperator">
+                        <span class="item-name">{{this.info.market_hash_name}}</span><br class="name-price-seperator">                                                
+                        <span class="item-price">Value: {{this.price}}$</span>
+                    </div>
+                    {{/each}}
+                    
+                </div>
 
-                <button class="btn btn-lg btn-success" id="depositButton">Deposit: 0$</button>
+                <center><button class="btn btn-lg btn-success" id="depositButton">Deposit: 0$</button></center>
         
             </div>
 
 
-            </center>
         </div>
 
     </div>

@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const SteamCommunity = require('steamcommunity');
 const community = new SteamCommunity();
 
+const fs = require('fs');
+const request = require('request');
+
 var itemSchema = mongoose.Schema({
 
     name: String,
@@ -11,40 +14,35 @@ var itemSchema = mongoose.Schema({
 
 });
 
-itemSchema.statics.updateItems = function(cb){
+itemSchema.statics.updateItems = function (cb) {
     var ItemModel = this;
-    this.deleteMany({}, function(deleteErr){
+    community.marketSearch({ appid: '252490' }, function (steamErr, items) {
 
-        if(deleteErr) return cb(deleteErr);
+        if (steamErr) return cb(steamErr);
 
-        community.marketSearch({appid: '252490'}, function(steamErr, items){
-        
-            if(steamErr) return cb(steamErr);
+        else {
+            items.forEach(function (item) {
 
-            else{
-                console.log('No steam error');
-                items.forEach(function(item){
-                    
-                    ItemModel.create({
-                        name: item.market_hash_name,
-                        price: item.price,
-                        image: item.image
+                Item.find({ name: item.market_hash_name }, function (err, savedItem) {
 
-                    }, function(err, newItem){
-                        
-                    });
+                    if (savedItem.price != item.price) {
+                        ItemModel.updateOne({ name: item.market_hash_name }, { price: item.price }, function (err, response) {
+                            if (err) console.log(err.message);
+
+                        });
+                    }
 
                 });
 
-            }
+            });
 
-        });
+        }
 
     });
 }
 
-itemSchema.statics.getItem = function(name, cb){
-    this.findOne({name: name}, 'name price image', cb);
+itemSchema.statics.getItem = function (name, cb) {
+    this.findOne({ name: name }, 'name price image', cb);
 }
 
 var Item = mongoose.model('Item', itemSchema);

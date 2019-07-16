@@ -17,6 +17,10 @@ const passport = require('passport');
 
 require('./config/passport')(passport);
 
+require('./steam/steam');
+require('./steam/events');
+
+
 var session = require('express-session');
 
 var sessionMiddleware = session({
