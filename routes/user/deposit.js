@@ -4,14 +4,14 @@ const router = express.Router()
 const TradeOfferManager = require('steam-tradeoffer-manager');
 const manager = new TradeOfferManager();
 
-router.get('/deposit', function(req, res){
+router.get('/user/deposit', function(req, res){
     req.user[0].getSteamInventory(function(items){
         res.render('user/deposit', {items: items});
     });
 
 });
 
-router.post('/deposit', function(req, res){
+router.post('/user/deposit', function(req, res){
 
     req.user[0].sendTradeOffer(req.body.items, function(err, newOffer){
         if(err) res.send(`Failed to send trade offer (${err.message})`);

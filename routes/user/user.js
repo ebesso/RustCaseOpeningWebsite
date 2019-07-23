@@ -6,7 +6,7 @@ function isAuthenticated(req, res, next){
     else res.redirect('/login');
 }
 
-router.use('/', isAuthenticated);
+router.use('/user', isAuthenticated);
 
 router.use(require('./deposit'));
 

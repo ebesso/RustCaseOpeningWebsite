@@ -32,16 +32,110 @@ ul{
 
 .chat-image{
     display: inline;
-    height: 1.7em;
 }
 
 .message-text{
     display: inline;
     margin-left: 2px;
-    /* height: 100%; */
     vertical-align: bottom; 
 }
 
 .message{
     margin-bottom: 3px;
+}
+
+#featured-cases-title{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 0;
+}
+
+.seperator {
+    margin-top: 7px;
+}
+
+.case-carousel{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+
+.open-button{
+    margin-top: 1px;
+    transition: transform .1s;    
+
+}
+
+.case-image{
+    width: 128px;
+    height: 88px;
+}
+
+.case-name{
+    margin-bottom: 0;
+}
+.case{
+    margin: 0 5px;
+
+    border-radius: 2px;
+    padding-bottom: 5px;
+}
+.slick-next{
+    margin-right: 15px;
+}
+.slick-prev{
+    margin-left: 15px;
+}
+
+.slick-prev:before, .slick-next:before { 
+    color:darkgoldenrod !important;
+}
+
+.item{
+    
+    margin-left: 2px;
+    width: 96px;
+
+    border: black solid 1px;
+}
+
+#open-case-button{
+    margin-top: 5px;
+}
+
+#inidcator{
+    display: inline;
+}
+
+
+.item-container{
+    display: block;
+    margin-left: 5%;
+    width: 90%; 
+}
+
+.item-image{
+    display: inline-block;
+
+    border: 1px black solid;
+    margin-bottom: 5px;
+    margin-left: 0.5px;
+    
+
+    width: 64px;
+}
+
+.carousel-container{
+    width: 90%;
+    margin-left: 5%;
+}
+
+.won-item{
+    width: 75%;
+    margin-left: 12.5%;
+
+    border: black 1px solid;
+}
+.won-item-ok-button{
+    width: 20%;
+    margin-left: 40%;
 }

@@ -78,6 +78,8 @@ app.use(require('./routes/index'));
 app.use(require('./routes/authentication'));
 app.use(require('./routes/admin/admin'));
 app.use(require('./routes/user/user'));
+app.use(require('./routes/case'));
+
 
 
 //Events

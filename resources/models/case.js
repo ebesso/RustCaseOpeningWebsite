@@ -29,29 +29,42 @@ var caseSchema = mongoose.Schema({
 
 });
 
+caseSchema.statics.getCaseWithItems = function(name, cb){
+    this.findOne({name: name}).populate('items.item').exec(cb);
+}
+
 caseSchema.statics.getCasesWithItems = function(cb){
     this.find().populate('items.item').exec(cb);
 }
 
-caseSchema.methods.open = function(steamid){
+caseSchema.methods.open = function(steamid, cb){
+    var currentCase = this;
     User.findOne({steamid: steamid}, function(err, user){
-        if(err)console.log(err.message);
+        if(err){
+            console.log(err.message);
+            return cb(err, null);
+        }
 
-        if(user.balance >= this.price){
-            User.updateOne({steamid: user.steamid}, {balance: user.balance - this.price}, function(err, rawResponse){
+        if(user.balance >= currentCase.price){
+            User.updateOne({steamid: user.steamid}, {balance: user.balance - currentCase.price}, function(err, rawResponse){
                 var chanceList = [];
 
-                this.items.forEach(function(item){
+                currentCase.items.forEach(function(item){
                     for(var i = 0; i < item.chance; i++){
                         chanceList.push(item.item);
                     }
                 });
 
                 var wonItem = chanceList[Math.floor(Math.random() * chanceList.length)];
-                
-                if(!this.offical){
-                    User.findOne({steamid: this.owner}, function(err, owner){
-                        if(err) console.log(err.message);
+
+                if(!currentCase.offical){
+                    User.findOne({steamid: currentCase.owner}, function(err, owner){
+
+                        if(err){
+                            console.log(err.message);
+                            return cb(err, null);
+                        }
+
                         var config = JSON.parse(fs.readFileSync(__dirname + '/../../config/cases.json'));
                         User.updateOne({steamid: owner.steamid}, {balance: owner.balance + this.price * config.ownerPercentage}, function(err, rawResponse){
                             console.log('Paid owner of case ' + this.price + config.ownerPercentage);
@@ -59,21 +72,17 @@ caseSchema.methods.open = function(steamid){
                     });
                 }
 
-                user.inventory.push(this);
+                user.inventory.push(wonItem);
 
-                CaseHistory.writeHistory(steamid, wonItem, this, function(err, newHistory){
-                    return {
-                        succcess: true,
-                        item: wonItem
-                    }
+                CaseHistory.writeHistory(steamid, wonItem, currentCase, function(err, newHistory){
+                    return cb(null, wonItem);
                 });
             });
 
         }else{
-            return {
-                succcess: false,
-                message: 'Insufficent funds'
-            }
+            return cb({
+                message: 'insufficent funds'
+            }, null);
         }
 
 
