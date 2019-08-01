@@ -23,13 +23,27 @@ itemSchema.statics.updateItems = function (cb) {
         else {
             items.forEach(function (item) {
 
-                Item.find({ name: item.market_hash_name }, function (err, savedItem) {
+                Item.findOne({ name: item.market_hash_name }, function (err, savedItem) {
 
-                    if (savedItem.price != item.price) {
-                        ItemModel.updateOne({ name: item.market_hash_name }, { price: item.price }, function (err, response) {
-                            if (err) console.log(err.message);
-
+                    if(savedItem == null){
+                        var newItem = new ItemModel({
+                            name: item.market_hash_name,
+                            price: item.price,
+                            image: item.image
                         });
+
+                        newItem.save(function(err, newSavedItem){
+                            if(err) console.log(`Failed to add new item (${err.message})`);
+                            else console.log(`New item added ${newSavedItem.name}`);
+                        });
+                    }
+                    else{
+                        if (savedItem.price != item.price) {
+                            ItemModel.updateOne({ name: item.market_hash_name }, { price: item.price }, function (err, response) {
+                                if (err) console.log(err.message);
+
+                            });
+                        }
                     }
 
                 });
@@ -37,6 +51,7 @@ itemSchema.statics.updateItems = function (cb) {
             });
 
         }
+        return cb(null);
 
     });
 }
