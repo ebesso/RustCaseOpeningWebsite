@@ -9,5 +9,7 @@ function isAuthenticated(req, res, next){
 router.use('/user', isAuthenticated);
 
 router.use(require('./deposit'));
+router.use(require('./profile'));
+
 
 module.exports = router;

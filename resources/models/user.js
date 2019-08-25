@@ -8,6 +8,7 @@ const community = new SteamCommunity();
 
 const Item = require('./item');
 const Trade = require('./trade');
+const CaseHistory = require('./caseHistory');
 
 var userSchema = mongoose.Schema({
 
@@ -78,6 +79,18 @@ userSchema.methods.sendTradeOffer = function(sendItems, cb){
     });
 
 }
+
+userSchema.methods.getInventory = function(cb){
+    
+    this.model('User').findOne({steamid: this.steamid}).select('inventory').populate('inventory').exec(cb);
+    
+}
+
+userSchema.methods.getCaseHistory = function(cb){
+    CaseHistory.find({opener: this.steamid}).populate('case').populate('item').exec(cb);
+}
+
+
 
 userSchema.statics.getUserBySteamid = function(steamid, cb){
     this.findOne({steamid: steamid}, 'steamid balance inventory').populate('inventory').exec(cb);

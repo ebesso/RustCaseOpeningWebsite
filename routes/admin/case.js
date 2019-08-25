@@ -38,19 +38,21 @@ router.post('/admin/delete/case', function(req, res){
             Case.deleteOne({name: deleteCase}, function(err){
                 if(err){
                     res.send(err.message);
-                    return;
+                    resolve();
                 }else{
-                    if(i == req.body.cases.length) resolve();
+                    if(i == req.body.cases.length - 1) resolve();
                 }
 
             });
+
+
         });
     });
 
 
     deleteLoop.then(() => {
 
-        res.send('Delete cases');
+        res.send('Deleted cases');
 
     });
 

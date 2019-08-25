@@ -1,0 +1,72 @@
+<!doctype HTML>
+<html>
+<head>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>    
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="/css/bootstrap.css">
+
+</head>
+<body>
+
+    {{> navigationbar }}
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div id="steam-info-container">
+
+                    <div id="steam-image-container">
+                        <img alt="steam-image" id="steam-image" src="{{image}}">                
+                    </div>
+                    
+                    <h2 id="steam-name">{{profile.name}}</h2>
+                    <p id="balance">{{getBalance user}}</p>
+
+                </div>
+                
+
+            </div>
+
+        </div>
+
+        <h3>Inventory</h3>
+        <hr>
+
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                {{#each inventory}}
+
+                    <img alt="item-image" class="item-image" src="{{this.image}}">
+
+                {{/each}}
+
+            </div>
+
+        </div>
+
+        <h3>Recent cases</h3>
+        <hr>
+
+        <ul id="recent-list">
+            {{#each history}}
+            
+            <li class="recent-case"><strong>{{this.date}}</strong>: {{this.item.name}} opened from {{this.case.name}}</li>
+
+            {{/each}}
+        </ul>
+
+
+
+    </div>
+
+</body>
+</html>

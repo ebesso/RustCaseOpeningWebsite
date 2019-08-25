@@ -74,9 +74,17 @@ caseSchema.methods.open = function(steamid, cb){
 
                 user.inventory.push(wonItem);
 
-                CaseHistory.writeHistory(steamid, wonItem, currentCase, function(err, newHistory){
-                    return cb(null, wonItem);
+                user.save(function(err, savedUser){
+
+                    if(err) console.log(err.message);
+
+                    CaseHistory.writeHistory(steamid, wonItem, currentCase, function(err, newHistory){
+                        return cb(null, wonItem);
+                    });
+
                 });
+
+
             });
 
         }else{
