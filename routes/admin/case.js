@@ -32,6 +32,26 @@ router.post('/admin/create/case', function(req, res){
     
 });
 
+router.get('/admin/update/case/:name', function(req, res){
+
+    Case.getCaseWithItems(req.params.name, function(err, editCase){
+        if(err) res.send(err.message);
+        else{
+            res.render('editCase', {case: editCase});
+        }
+    });
+
+});
+
+router.get('/admin/update/case', function(req, res){
+
+    Case.editCase(req.body.name, req.body.changed, function(err, resp){
+        if(err) res.send('Failed to update case');
+        else res.send('Updated case');
+    });
+
+});
+
 router.post('/admin/delete/case', function(req, res){
     var deleteLoop = new Promise((resolve, reject) => {
         req.body.cases.forEach(function(deleteCase, i){

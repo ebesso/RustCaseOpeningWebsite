@@ -97,6 +97,10 @@ caseSchema.methods.open = function(steamid, cb){
     });
 }
 
+caseSchema.statics.editCase = function(name, data, cb){
+    Case.updateOne({name: name}, data, cb);
+}
+
 caseSchema.statics.createOfficalCase = function(name, price, image, items, cb){
     var newCase = new this({
 
