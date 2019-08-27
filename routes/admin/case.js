@@ -32,18 +32,25 @@ router.post('/admin/create/case', function(req, res){
     
 });
 
-router.get('/admin/update/case/:name', function(req, res){
+router.get('/admin/edit/case/:name', function(req, res){
 
     Case.getCaseWithItems(req.params.name, function(err, editCase){
         if(err) res.send(err.message);
         else{
-            res.render('editCase', {case: editCase});
+            Item.find({}, function(err, items){
+                if(err) console.log(err.message);
+                res.render('editCase', {
+                    case: editCase, 
+                    admin: true, 
+                    items: items
+                });
+            });
         }
     });
 
 });
 
-router.get('/admin/update/case', function(req, res){
+router.post('/admin/edit/case', function(req, res){
 
     Case.editCase(req.body.name, req.body.changed, function(err, resp){
         if(err) res.send('Failed to update case');
