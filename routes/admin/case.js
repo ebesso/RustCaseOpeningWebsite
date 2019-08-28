@@ -52,7 +52,7 @@ router.get('/admin/edit/case/:name', function(req, res){
 
 router.post('/admin/edit/case', function(req, res){
 
-    Case.editCase(req.body.name, req.body.changed, function(err, resp){
+    Case.editCase(req.body.name, req.body.data, function(err, resp){
         if(err) res.send('Failed to update case');
         else res.send('Updated case');
     });

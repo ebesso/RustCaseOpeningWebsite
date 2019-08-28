@@ -94,4 +94,67 @@ $(document).ready(function(){
 
     });
 
+    $('#confirmButton').click(function(){
+
+        if($('#case-form').valid()){
+
+            var data = {
+                name: $('#nameInput').val(),
+                data: {
+                    price: $('#priceInput').val(),
+                    image: $('#imageInput').val(),
+
+                    items: []
+                    
+                }
+            };
+
+            var totalPercentage = 0;
+
+            $('.item').each(function(index){
+
+                if($(this).find('select').valid() == false){
+                    alert('Invalid form');
+                    return;
+                }if($(this).find('input').valid() == false){
+                    alert('Invalid form');
+                    return;
+                }
+
+                var option = $(this).find('select option:selected');
+                var chance = Number($(this).find('input').val());
+
+                if(chance <= 0){
+                    alert('Chance must be greater than 0');
+                    return;
+                }
+
+                data.data.items.push({
+                    
+                    name: option.attr('data-name'),
+                    chance: chance
+                    
+                });
+
+                totalPercentage += chance
+    
+            });
+
+            if(totalPercentage != 100){
+                alert('Invalid form, Sum of chances must be 100');
+                return;
+            }
+
+            $.post('/admin/edit/case', data, function(resp){
+
+                alert(resp);
+
+            });
+
+        }else{
+            alert('Invalid form');
+        }
+
+    });
+
 });

@@ -98,7 +98,28 @@ caseSchema.methods.open = function(steamid, cb){
 }
 
 caseSchema.statics.editCase = function(name, data, cb){
-    Case.updateOne({name: name}, data, cb);
+
+
+    var items = [];
+
+    var itemLoop = new Promise((resolve, reject) => {
+        data.items.forEach(caseItem => {
+            Item.getItem(caseItem.name, function(err, itemInfo){
+                if(err) console.log(err.message);
+                items.push({
+                    item: itemInfo,
+                    chance: caseItem.chance
+                });
+                if(items.length == data.items.length) resolve();        
+            });
+        });
+
+    });
+
+    itemLoop.then(() => {
+        data.items = items;
+        Case.updateOne({name: name}, data, cb);    
+    });
 }
 
 caseSchema.statics.createOfficalCase = function(name, price, image, items, cb){

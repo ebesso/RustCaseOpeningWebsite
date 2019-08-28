@@ -22,7 +22,7 @@
 
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" class="form-control" id="nameInput" name="nameInput" placeholder="Name" value="{{case.name}}" required>
+                <input type="text" class="form-control" id="nameInput" name="nameInput" placeholder="Name" value="{{case.name}}" required disabled>
             </div>
 
             {{#if admin}}
@@ -86,7 +86,7 @@
                 <p id="receiveAmount">You will receive: 0$</p>
                 {{/if}}
 
-                <button type="button" id="submitButton" class="btn btn-primary btn-md">Create</button>
+                <button type="button" id="confirmButton" class="btn btn-primary btn-md">Edit</button>
             </div>
             
         </form>
