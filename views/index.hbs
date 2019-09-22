@@ -1,188 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
-    <script src="https://kit.fontawesome.com/70748e6c5a.js"></script>
-
-    <script src="/js/bootstrap.min.js"></script>
-
-    <script src="/js/slick.min.js"></script>    
-    <script src="/js/index.js"></script>
-
-    <script src="/js/owl.carousel.min.js"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>Home</title>
 
-    <link rel="stylesheet" href="/css/slick.css">
-    <link rel="stylesheet" href="/css/slick-theme.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/home.js"></script>
     
-    <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick-theme.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/home.css">    
 
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
-
-    <link rel="stylesheet" href="/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/css/owl.theme.default.css">
-    
 </head>
 <body>
 
     {{> navigationbar }}
 
+    <center><h1 id="title">Cases</h1></center>
 
-    <div class="container-fluid">
+    <div class="case-container">
+        
+        {{#each cases}}
 
-        <div class="row">
+        <div class="case">
 
-            <div class="col-lg-3">
+            <img alt="case-image" src="{{this.image}}" class="case-image">
 
-                <div class="col-lg-12 rounded section-header">
-                    <center><p class="section-header-text">Recent Openings</p></center>
-                </div>
-                <div class="col-lg-12 section">
-
-                    <ul>
-                        
-                    </ul>
-
-                </div>
-
-            </div>
-
-            <div class="col-lg-6">
-
-                <div class="col-lg-12 rounded section-header">
-                    <center><p class="section-header-text">Featured Cases</p></center>
-                </div>
-                <div class="col-lg-12 section">
-    
-                    <div class="case-carousel">
-
-                        {{#each cases}}
-
-                        <div class="case" data-price="{{this.price}}">
-                            
-                            <center>
-                                <img class="case-image" alt="case-image" src="{{this.image}}">
-                            </center>
-    
-                            <center><p class="case-name">{{this.name}}</p></center>                        
-                            
-                            <center>
-                                <button class="w3-button w3-round-xxlarge w3-white w3-border w3-border-yellow w3-hover-white w3-small open-button" data-price="{{this.price}}" data-name="{{this.name}}">{{this.price}}€</button> 
-                            </center>
-                        </div>
-
-                        {{/each}}
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-lg-3">
-
-                <div class="section-header col-lg-12 rounded" style="margin-bottom: 0;">
-                    <center><p class="section-header-text">Chat</p></center>
-                </div>
-                <div class="col-lg-12 section">
-
-                    <ul id="message-history">
-                        
-                    </ul>
-
-                    <div class="input-group mb-3">
-                        
-                        <input id="messageInput" type="text" class="form-control" placeholder="Enter message">
-
-
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" id="sendButton">Send</button>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
+            <p class="case-name">{{this.name}}</p>
+            <p class="case-price">{{this.price}}$</p>
+            
 
         </div>
 
-        <div class="modal fade" id="open-case-modal" tabindex="-1">
-
-            <div class="modal-dialog modal-lg">
-
-                <div class="modal-content">
-                    
-                    <div class="modal-header">
-
-                        <h2 class="col-12 modal-title text-center" id="case-title">Rifle case</h2>
-
-                    </div>
-
-                    <div class="modal-body">
-                        <div class="carousel-container">
-                            <div class="owl-carousel owl-theme" id="carousel-content">
-
-                            </div>
-                        </div>
-
-                        <center><i id="indicator" class="fas fa-caret-up"></i></center>
-
-                        <center><button class="w3-btn w3-yellow" id="open-case-button">Open</button></center>
-
-                    </div>
-
-                    <hr style="margin-top: 0; margin-bottom: 20px;">
-
-                    <div class="item-container">
-
-                    </div>
-
-                </div>
-                
-            </div>
-
-        </div>
-
-        <div class="modal fade" id="won-item-modal" tabindex="-1">
-
-            <div class="modal-dialog">
-
-                <div class="modal-content">
-
-                    <div class="modal-header">
-
-                        <h2 class="col-12 modal-title text-center">You won</h2>
-
-                    </div>
-
-                    <div class="modal-body">
-
-
-                        <img id="won-item-image" alt="won-item" src="ak.jpg" class="won-item">
-
-
-                        <hr>
-
-                        <center><h4 id="won-item-info">$</h4></center>
-                        
-                        <center><button class="w3-btn w3-green" id="won-item-ok-button">Ok!</button></center>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
+        {{/each}}
 
     </div>
-
 </body>
 </html>

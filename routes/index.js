@@ -6,7 +6,17 @@ const Case = require('../resources/models/case');
 
 router.get('/', function(req, res){
     Case.getCasesWithItems(function(err, cases){
-        res.render('index', {cases: cases});
+        if(req.user){
+            req.user[0].getSteamProfile(function(err, profile){
+                res.render('index', {
+                    cases: cases,
+                    profile: profile,
+                    image: profile.getAvatarURL()
+                });
+            });
+        }else{
+            res.render('index', {cases: cases});
+        }
     });
 });
 

@@ -52,11 +52,9 @@ const hbs = exphbs.create({
     partialsDir: __dirname + '/views/partials', 
 
     helpers: {
-
         getBalance: function(user){
             return user[0].balance;
         }
-
     }
 
 });
@@ -69,7 +67,9 @@ db.once('open', function(){
 });
 
 app.use(function (req, res, next) {
-    if(req.user)res.locals.user = req.user;
+    if(req.user){
+        res.locals.user = req.user;
+    }
     next();
 });
 

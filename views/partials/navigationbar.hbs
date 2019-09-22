@@ -1,4 +1,37 @@
-<script src="https://kit.fontawesome.com/70748e6c5a.js"></script>
+
+<link rel="stylesheet" href="css/sidebar.css">
+
+<script src="js/big-slide.js"></script>
+<script src="js/sidebar.js"></script>    
+    
+<script src="https://kit.fontawesome.com/70748e6c5a.js" crossorigin="anonymous"></script>
+
+<a href="#menu" class="menu-link"><i class="fas fa-bars"></i></a>
+
+<nav id="menu" class="panel" role="navigation">
+    {{#if user}}
+    <div id="profile-container">
+
+        <img alt="profile-image" id="profile-image" src="{{image}}">
+        <p id="profile-name">{{profile.name}}</p>
+        <p id="profile-id">{{profile.steamID}}</p>
+        <p id="profile-balance">{{getBalance user}}$</p>
+
+    </div>
+    {{/if}}
+
+    <ul id="menu-list">
+
+        <li class="menu-item"><a href="#" class="menu-button">Home</a></li>
+        <li class="menu-item"><a href="/profile" class="menu-button">Profile</a></li>
+        <li class="menu-item"><a href="/deposit" class="menu-button">Deposit</a></li>
+        <li class="menu-item"><a href="/withdraw" class="menu-button">Withdraw</a></li>
+
+    </ul>
+
+</nav>
+
+{{!-- <script src="https://kit.fontawesome.com/70748e6c5a.js"></script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 20px; border-bottom: #f0c400 solid 3px;">
 
@@ -34,4 +67,4 @@
     </div>
 
 
-</nav>
+</nav> --}}
