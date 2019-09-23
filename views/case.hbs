@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Open Case</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="/css/case.css">
+	<link rel="stylesheet" href="/css/pushy-buttons.css">
+	
+    <script src="/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>    
+    <script src="/js/case.js"></script>
+
+
+</head>
+<body>
+
+    {{> navigationbar }}
+    
+    <center>
+    <div class="case-container">
+
+        <h1 id="case-title">{{case.name}}</h1>
+        <img alt="case-image" src="{{case.image}}" id="case-image">
+
+    </div>
+    </center>
+
+    <div id="case-carousel-container">
+		<div id="vertical-line"></div>
+    </div>
+
+
+    <div id="button-container">
+        <button class="pushy__btn pushy__btn--md pushy__btn--red" id="open-button">Open</button>   
+    </div>
+    
+    <div id="item-container">
+
+        <ul id="item-list">
+
+            {{#each case.items}}
+
+            <li class="item">
+                <img class="item-image" alt="item-image" src="{{this.item.image}}">
+                
+                <center><p class="item-name">{{this.item.name}}</p></center>
+                <center><p class="item-chance">{{this.chance}}%</p></center>
+            </li>
+
+            {{/each}}
+        </ul>
+
+    </div>
+
+    <div id="win-modal" class="modal">
+
+        <center>
+
+            <p id="modal-label">You Won</p>
+
+            <img alt="item-image" src="https://steamcommunity-a.akamaihd.net/economy/image/rtOnLXYSD-u65eusOk-nO4hCpUCJo2NbCxc2U4Y51MLNQ5Hz3URG1UJcBu0sv2Ko-M1Zj0mvYmKzVOblh03iZzCDtDkHlikYyUNwwYoMAW_krs7YGizebuSsYw/360fx360f" id="modal-image">
+
+            <p id="modal-item-name">AK-Temepered</p>
+            <p id="modal-item-price">100$</p>
+
+            <a class="pushy__btn pushy__btn--md pushy__btn--green" href="#" rel="modal:close" id="modal-close-button">OK</a>
+            
+        </center>
+    </div>
+
+    
+</body>
+</html>

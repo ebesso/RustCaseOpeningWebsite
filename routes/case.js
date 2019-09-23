@@ -6,16 +6,16 @@ const User = require('../resources/models/user');
 
 router.get('/case/get/:name', function(req, res){
     Case.getCaseWithItems(req.params.name, function(err, searchedCase){
-        if(err){
-            res.send({
-                success: false,
-                message: err.message
+        if(req.user){
+            req.user[0].getSteamProfile(function(err, profile){
+                res.render('case', {
+                    case: searchedCase,
+                    profile: profile,
+                    image: profile.getAvatarURL()
+                });
             });
         }else{
-            res.send({
-                success: true,
-                case: searchedCase
-            });
+            res.render('case', {case: searchedCase})
         }
 
     });

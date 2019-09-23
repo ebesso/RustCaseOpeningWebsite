@@ -1,0 +1,162 @@
+body {
+    background-color: #17202d;
+}
+
+#vertical-line{
+    position: absolute;
+    left: 49%;
+    margin-top: 65px;
+
+    height: 95px;
+    border-left: 4px solid lightblue;
+
+    z-index: 999;
+    
+}
+
+#case-carousel-container{
+    width: 900px;
+    height: 225px;
+    margin: 0 auto;
+
+    overflow: hidden;
+    white-space: nowrap;
+    
+}
+
+#open-button{
+    margin-top: 10px;
+}
+
+#button-container{
+    display: block;
+
+    width: 100px;
+    height: 95px;
+
+    margin: 0 auto;
+}
+
+.item-thumbnail{
+    width: 85px;
+    height: 85px;
+
+
+    padding: 0;
+    margin: 0;
+    margin-top: 70px;
+
+    text-align: center;
+    display: inline-block;
+}
+
+.green{
+    background-color: green;
+}
+.red{
+    background-color: red;
+}
+.blue{
+    background-color: purple;
+}
+
+#item-container{
+    width: 1200px;
+    margin: 0 auto;    
+}
+
+#item-list{
+    list-style: none;
+}
+.item{
+    float: left;
+
+    width: 120px;
+    height: 180px;
+
+    background-color: #1a2331;  
+    
+    margin: 5px;
+}
+.item-image{
+    height: 80px;
+    width: 100px;
+    
+    margin-left: 10px;
+    margin-top: 10px;
+
+}
+.item-name{
+    color: white;
+    font-family: "Roboto Condensed";
+
+    margin-bottom: 2px;
+    
+}
+.item-chance{
+    color: red;
+    font-family: "Roboto Condensed"; 
+
+    margin-top: 2px;
+}
+#case-container{
+    display: flex;
+    align-items: center;
+
+    width: 500px;
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+#case-image{
+    vertical-align: middle;
+
+    margin: 0 auto;
+    width: 300px;
+
+}
+#case-title{
+
+    margin-bottom: 10px;    
+
+    font-family: "Roboto Condensed";
+    color: white;
+    font-size: 72px;
+
+}
+
+#modal-label{
+    color: lightgreen;
+    font-size: 62px;
+    font-family: "Roboto Condensed";
+
+    margin: 0;
+}
+
+#modal-item-name{
+    color: white;
+    font-size: 48px;
+    font-family: "Roboto Condensed";
+    margin: 0;
+    margin-top: 20px;
+    
+}
+
+#modal-item-price{
+    font-size: 32px;
+    font-family: "Roboto Condensed";
+    color: red;
+    margin: 5px;
+    margin-bottom: 20   px;
+    
+}
+
+#win-modal{
+    background-color: #17202d;
+}
+
+#modal-close-button{
+    margin-top: 20px;
+    text-decoration: none;
+}

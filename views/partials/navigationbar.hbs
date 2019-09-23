@@ -1,8 +1,8 @@
 
-<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="/css/sidebar.css">
 
-<script src="js/big-slide.js"></script>
-<script src="js/sidebar.js"></script>    
+<script src="/js/big-slide.js"></script>
+<script src="/js/sidebar.js"></script>    
     
 <script src="https://kit.fontawesome.com/70748e6c5a.js" crossorigin="anonymous"></script>
 
@@ -22,49 +22,17 @@
 
     <ul id="menu-list">
 
-        <li class="menu-item"><a href="#" class="menu-button">Home</a></li>
+        <li class="menu-item"><a href="/" class="menu-button">Home</a></li>
         <li class="menu-item"><a href="/profile" class="menu-button">Profile</a></li>
         <li class="menu-item"><a href="/deposit" class="menu-button">Deposit</a></li>
         <li class="menu-item"><a href="/withdraw" class="menu-button">Withdraw</a></li>
 
+        {{#if user}}
+        <li class="menu-item"><a href="/logout" class="menu-button">Logout</a></li>
+        {{else}}
+        <li class="menu-item"><a href="/login" class="menu-button">Login</a></li>
+        {{/if}}
+
     </ul>
 
 </nav>
-
-{{!-- <script src="https://kit.fontawesome.com/70748e6c5a.js"></script>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 20px; border-bottom: #f0c400 solid 3px;">
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/cases"><i class="fas fa-briefcase"></i> Cases</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/user/deposit"><i class="fas fa-hand-holding-usd"></i> Deposit</a>
-            </li>
-        </ul>
-
-        <ul class="navbar-nav">
-            {{#if user}}
-            <li class="nav-item">
-                <a class="nav-link" href=""><i class="fas fa-wallet"></i> Balance: {{ getBalance user }}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/profile"><i class="fas fa-user"></i> Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
-            </li>
-            {{else}}
-            <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
-            {{/if}}
-                         
-        </ul>
-    </div>
-
-
-</nav> --}}
