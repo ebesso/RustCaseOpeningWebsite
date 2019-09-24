@@ -1,48 +1,50 @@
-<!doctype html>
 <html>
 <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <link rel="stylesheet" href="/css/deposit.css">
+    <title>Deposit</title>
 
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="/js/jquery.min.js"></script>
     <script src="/js/deposit.js"></script>
-    
 
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    
-    
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/css/deposit.css">    
+
+    <link rel="stylesheet" href="/css/pushy-buttons.css">
+
+
+
 </head>
 <body>
+    
+    <h1 id="title">Deposit</h1>
 
-    {{> navigationbar }}
+    <p id="value">Value: 0$</p>
 
-    <div class="container">
+    <div id="inventory-container">
 
-        <div class="row">
-            <div class="col-lg-12">
-                <center><h2 id="inventory-title">Inventory</h2></center>
-                <hr>                
-                <div class="inventory-container row">
+        <ul id="item-list">
 
-                    {{#each items}}
-                    <div class="item-container col-lg-3" data-itemid="{{this.info.id}}" data-price="{{this.price}}">
-                        <center><img src="https://steamcommunity.com/economy/image/{{this.info.icon_url}}" class="item-icon"></center>
-                        <hr class="img-seperator">
-                        <span class="item-name">{{this.info.market_hash_name}}</span><br class="name-price-seperator">                                                
-                        <span class="item-price">Value: {{this.price}}$</span>
-                    </div>
-                    {{/each}}
-                    
-                </div>
+            {{#each items}}
 
-                <center><button class="btn btn-lg btn-success" id="depositButton">Deposit: 0$</button></center>
-        
-            </div>
+            <li class="item" data-value="{{this.price}}" data-name="{{this.info.name}}">
+                <img class="item-image" alt="item-image" src="{{this.info.image}}">
+                
+                <center><p class="item-name">{{this.info.name}}</p></center>
+                <center><p class="item-price">{{this.price}}$</p></center>
+            </li>
 
+            {{/each}}
 
-        </div>
+        </ul>
 
+    </div>
+
+    <div id="button-container">
+        <button class="pushy__btn pushy__btn--lg pushy__btn--red" id="open-button">Deposit</button>   
     </div>
 
 </body>

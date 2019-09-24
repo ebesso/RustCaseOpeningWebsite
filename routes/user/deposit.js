@@ -6,7 +6,15 @@ const manager = new TradeOfferManager();
 
 router.get('/user/deposit', function(req, res){
     req.user[0].getSteamInventory(function(items){
-        res.render('user/deposit', {items: items});
+        console.log(items[0].image);
+        req.user[0].getSteamProfile(function(err, profile){
+            res.render('user/deposit', {
+                items: items,
+                profile: profile,
+                image: profile.getAvatarURL()
+            
+            });
+        });
     });
 
 });

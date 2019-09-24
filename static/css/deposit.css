@@ -1,56 +1,104 @@
-ul {
-    list-style-type: none;
+body {
+    background-color: #17202d;
 }
 
-.img-seperator{
-    margin-bottom: 4px;
+#title{
+    font-size: 72px;
+    font-family: "Roboto Condensed";
+
+    color: white;
+
+    text-align: center;
+
+    margin-bottom: 5px;
+}
+#value{
+    font-size: 28px;
+    color: green;
+
+    font-family: "Roboto Condensed";
+
+    text-align: center;
+
+    margin: 0;
 }
 
-.item-container{
-    display: inline-block;
-
-    border: 1px lightgrey solid;
-    border-radius: 5px;
-    margin-bottom: 2px;
-
-    padding-bottom: 15px;   
-
-}
-
-.name-price-seperator{
+#inventory-container{
     display: block;
-    margin: 1px 0;
-}
 
-.item-name{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 14px;
+    background-color: #0f131b;
+    
+    width: 1367px;
+    height: auto;
+
+    margin: 0 auto;
+    margin-top: 20px;
+
+    border: 1px black solid;
 }
-.item-price{
-    font-size: 12px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        
-}
-.item-icon{
+.item{
+    /* float: left; */
+
+    width: 120px;
+    height: 160px;
+
+    background-color: #1a2331;  
+    
+    margin: 5px;    
+
     display: inline-block;
-    width: 50%;
+
+    /* box-shadow: 0 1px 2px rgba(0,0,0,0.15); */
+    transition: box-shadow 0.1s ease-in-out;
+
+    border: black 1px solid;
 }
 
-.item-container:hover{
-    border: 2px grey solid;
+.item:hover{
+    /* box-shadow: 0 10px 20px rgba(0,0,0,0.3); */
+    border: lightcoral 1px solid;
 }
 
+.selected:hover{
+    border: red 1px solid;    
+}
 .selected{
-    border: 2px black solid;
+    border: red 1px solid;    
+}
+
+.item-image{
+    height: 80px;
+    width: 100px;
+    
+    margin-left: 10px;
+    margin-top: 10px;
+
+}
+.item-name{
+    color: white;
+    font-family: "Roboto Condensed";
+
+    margin-bottom: 2px;
     
 }
+.item-price{
+    color: red;
+    font-family: "Roboto Condensed"; 
 
-#inventory-title{
-    margin-top: 5px;
+    margin-top: 2px;
 }
 
-#depositButton{
-    display: block;
-    margin-top: 20px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+#item-list{
+    list-style: none;
+    
+    
+    padding-left: 5px;
+    padding-right: 5px;
+   
+}
+#button-container{
+    width: 200px;
+    
+    margin: 0 auto;
+    margin-top: 10px;
 }
