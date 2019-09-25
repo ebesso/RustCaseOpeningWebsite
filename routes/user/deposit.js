@@ -6,7 +6,6 @@ const manager = new TradeOfferManager();
 
 router.get('/user/deposit', function(req, res){
     req.user[0].getSteamInventory(function(items){
-        console.log(items[0].image);
         req.user[0].getSteamProfile(function(err, profile){
             res.render('user/deposit', {
                 items: items,

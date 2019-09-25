@@ -36,12 +36,12 @@ userSchema.methods.getSteamInventory = function(cb){
 
                 items.forEach(function(item){
 
-                    Item.findOne({name: item.market_hash_name}, 'price', function(err, info){
+                    Item.findOne({name: item.market_hash_name}, function(err, info){
                         if(err) console.log(err.message);
+
                         inventory.push({
 
-                            info: item,
-                            image: info.image,
+                            info: info,
                             price: info.price
 
                         });

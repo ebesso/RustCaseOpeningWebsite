@@ -37,21 +37,25 @@ body {
     border: 1px black solid;
 }
 .item{
-    /* float: left; */
+    display: inline-block;
 
     width: 120px;
-    height: 160px;
+    height: 180px;
+
+    max-width: 120px;
+    max-height: 180px;
 
     background-color: #1a2331;  
     
-    margin: 5px;    
-
-    display: inline-block;
+    margin: 5px;
+    padding: 0; 
 
     /* box-shadow: 0 1px 2px rgba(0,0,0,0.15); */
     transition: box-shadow 0.1s ease-in-out;
 
     border: black 1px solid;
+
+    vertical-align: top;
 }
 
 .item:hover{
@@ -67,6 +71,8 @@ body {
 }
 
 .item-image{
+    display: inline-block;
+
     height: 80px;
     width: 100px;
     
