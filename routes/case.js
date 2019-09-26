@@ -35,7 +35,7 @@ router.post('/case/open/:name', function(req, res){
                 });
             }else{
 
-                searchedCase.open(req.user[0].steamid, function(err, item){
+                searchedCase.open(req.user[0], function(err, item){
                     if(err){
                         res.send({
                             success: false,

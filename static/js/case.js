@@ -1,13 +1,28 @@
 var carousel_lenght = 100;
 var rolling = false;
 
+var itemThumbnails;
+
 $(document).ready(function(){
 
+    itemThumbnails = $('#case-carousel-container').children();
+
     $('#open-button').click(function(){
-        if(rolling) return;
-        init();
-        roll();
+    
+        var name = $('#case-name').attr('data-name');
+    
+        $.post('/case/open/' + name, function(data){
+            if(!data.success){
+                alert(data.message);
+                return;
+            }else{
+                init();
+                roll(data.item);
+            }
+
+        });
     });
+
     init();
 
 });
@@ -16,25 +31,11 @@ $(document).ready(function(){
 function init(){
     $('.item-thumbnail').remove();
 
-    for(var i = 0; i < carousel_lenght; i++){
+    // while($('#case-carousel-container').children().length < 100){
+    //     var newItem = $('.item-thumbnail')[Math.random(0, $('.item-thumbnail').length) - 1].clone();
+    //     newItem.appendTo('#case-carousel-container');
+    // }
 
-        var item1 = document.createElement('div');
-        item1.classList.add('item-thumbnail');
-        item1.classList.add('green');
-
-        var item2 = document.createElement('div');
-        item2.classList.add('item-thumbnail');
-        item2.classList.add('red');
-
-        var item3 = document.createElement('div');
-        item3.classList.add('item-thumbnail');
-        item3.classList.add('blue');
-        
-        document.getElementById('case-carousel-container').appendChild(item1);
-        document.getElementById('case-carousel-container').appendChild(item2);
-        document.getElementById('case-carousel-container').appendChild(item3);
-        
-    }
     $('#case-carousel-container').children().hide();
     $('#case-carousel-container').css("display", "none");    
     

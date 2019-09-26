@@ -35,10 +35,18 @@
 
     <div id="case-carousel-container">
 		<div id="vertical-line"></div>
+
+        {{#each case.items}}
+
+        <img class="item-thumbnail" src="{{this.item.image}}">
+
+        {{/each}}
+
     </div>
 
 
     <div id="button-container">
+        <input type="hidden" data-name="{{case.name}}" id="case-name">
         <button class="pushy__btn pushy__btn--md pushy__btn--red" id="open-button">Open</button>   
     </div>
     
@@ -49,7 +57,7 @@
             {{#each case.items}}
 
             <li class="item">
-                <img class="item-image" alt="item-image" src="{{this.image}}">
+                <img class="item-image" alt="item-image" src="{{this.item.image}}">
                 
                 <center><p class="item-name">{{this.item.name}}</p></center>
                 <center><p class="item-chance">{{this.chance}}%</p></center>
