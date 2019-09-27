@@ -16,8 +16,9 @@ $(document).ready(function(){
                 alert(data.message);
                 return;
             }else{
-                init();
-                roll(data.item);
+                alert(data.item.name);
+                // init();
+                // roll(data.item);
             }
 
         });
