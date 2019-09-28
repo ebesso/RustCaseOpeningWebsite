@@ -16,33 +16,28 @@ $(document).ready(function(){
                 alert(data.message);
                 return;
             }else{
-                alert(data.item.name);
-                // init();
-                // roll(data.item);
+                init();
+                roll(data.item);
             }
 
         });
     });
 
-    init();
+    init();  
 
 });
 
 
 function init(){
-    $('.item-thumbnail').remove();
-
-    // while($('#case-carousel-container').children().length < 100){
-    //     var newItem = $('.item-thumbnail')[Math.random(0, $('.item-thumbnail').length) - 1].clone();
-    //     newItem.appendTo('#case-carousel-container');
-    // }
 
     $('#case-carousel-container').children().hide();
     $('#case-carousel-container').css("display", "none");    
+
+    $('.item-thumbnail').first().animate({marginLeft: 0});
     
 }
 
-function roll(){
+function roll(item){
 
     $("#vertical-line").hide();
     rolling = true;
@@ -55,6 +50,10 @@ function roll(){
                 init();
                 $('#case-image').fadeIn("slow");
                 rolling  = false;
+                
+                $('#modal-image').attr('src', item.image);
+                $('#modal-item-name').html(item.name);
+                $('#modal-item-price').html(item.price + '$');
 
                 $('#win-modal').modal({
                     fadeDuration: 250
@@ -69,7 +68,4 @@ function roll(){
 
     });
     
-
-
-
 }

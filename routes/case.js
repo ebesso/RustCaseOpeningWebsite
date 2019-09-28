@@ -6,17 +6,34 @@ const User = require('../resources/models/user');
 
 router.get('/case/get/:name', function(req, res){
     Case.getCaseWithItems(req.params.name, function(err, searchedCase){
-        if(req.user){
-            req.user[0].getSteamProfile(function(err, profile){
-                res.render('case', {
-                    case: searchedCase,
-                    profile: profile,
-                    image: profile.getAvatarURL()
-                });
+        var itemList = [];
+
+        var itemLoop = new Promise((resolve, reject) => {
+            searchedCase.items.forEach(item => {
+                for(var i = 0; i < item.chance; i++){
+                    itemList.push(item);
+                }
+                if(itemList.length == 100) resolve();
             });
-        }else{
-            res.render('case', {case: searchedCase})
-        }
+        });
+
+        itemLoop.then(() => {
+            if(req.user){
+                req.user[0].getSteamProfile(function(err, profile){
+    
+                    res.render('case', {
+                        case: searchedCase,
+                        caseItems: itemList,
+                        profile: profile,
+                        image: profile.getAvatarURL()
+                    });
+                });
+            }else{
+                res.render('case', {case: searchedCase, caseItems: itemList});
+            }
+    
+        });
+
 
     });
 });
