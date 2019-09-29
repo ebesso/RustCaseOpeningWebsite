@@ -17,19 +17,30 @@ router.get('/case/get/:name', function(req, res){
             });
         });
 
+        var randomizedList = [];
+
+        var randomizeLoop = new Promise((resolve, reject) => {
+
+            for(var i = 0; i < 100; i++){
+                randomizedList.push(itemList[Math.floor(Math.random() * itemList.length)]);
+            }
+
+        });
+        
+
         itemLoop.then(() => {
             if(req.user){
                 req.user[0].getSteamProfile(function(err, profile){
     
                     res.render('case', {
                         case: searchedCase,
-                        caseItems: itemList,
+                        caseItems: randomizedList,
                         profile: profile,
                         image: profile.getAvatarURL()
                     });
                 });
             }else{
-                res.render('case', {case: searchedCase, caseItems: itemList});
+                res.render('case', {case: searchedCase, caseItems: randomizedList});
             }
     
         });

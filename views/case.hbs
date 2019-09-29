@@ -38,7 +38,7 @@
 
         {{#each caseItems}}
 
-        <img class="item-thumbnail" src="{{this.item.image}}">
+        <img class="item-thumbnail" src="{{this.item.image}}" data-name="{{this.item.name}}">
 
         {{/each}}
 
@@ -46,7 +46,7 @@
 
 
     <div id="button-container">
-        <input type="hidden" data-name="{{case.name}}" id="case-name">
+        <input type="hidden" data-name="{{case.name}}" data-price="{{case.price}}" id="case-info">
         <button class="pushy__btn pushy__btn--md pushy__btn--red" id="open-button">Open</button>   
     </div>
     
@@ -79,7 +79,7 @@
             <p id="modal-item-name">AK-Temepered</p>
             <p id="modal-item-price">100$</p>
 
-            <a class="pushy__btn pushy__btn--md pushy__btn--green" href="#" rel="modal:close" id="modal-close-button">OK</a>
+            <a class="pushy__btn pushy__btn--md pushy__btn--green" rel="modal:close" id="modal-close-button">OK</a>
             
         </center>
     </div>
