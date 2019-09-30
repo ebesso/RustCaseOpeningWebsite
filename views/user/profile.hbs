@@ -1,72 +1,139 @@
-<!doctype HTML>
 <html>
 <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>    
-    
-    <script src="/js/bootstrap.min.js"></script>
+    <title>Profile</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="js/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/profile.css">
 
 </head>
 <body>
+    
+    <h1 id="title">Profile</h1>
 
-    {{> navigationbar }}
+    <div id="user-info-container">
+        <img alt="user image" id="profile-image" src="https://66.media.tumblr.com/4e21bd4ab89adb28fb5007ce6966b81b/tumblr_p14agkHN211tu5h6io1_400.jpg">
 
-    <div class="container">
+        <p id="username" class="info-label">Magistern</p>
+        <p id="steamid" class="info-label">76561198128942733</p>
 
-        <div class="row">
-
-            <div class="col-lg-12">
-
-                <div id="steam-info-container">
-
-                    <div id="steam-image-container">
-                        <img alt="steam-image" id="steam-image" src="{{image}}">                
-                    </div>
-                    
-                    <h2 id="steam-name">{{profile.name}}</h2>
-                    <p id="balance">{{getBalance user}}</p>
-
-                </div>
-                
-
-            </div>
-
-        </div>
-
-        <h3>Inventory</h3>
-        <hr>
-
-        <div class="row">
-
-            <div class="col-lg-12">
-
-                {{#each inventory}}
-
-                    <img alt="item-image" class="item-image" src="{{this.image}}">
-
-                {{/each}}
-
-            </div>
-
-        </div>
-
-        <h3>Recent cases</h3>
-        <hr>
-
-        <ul id="recent-list">
-            {{#each history}}
-            
-            <li class="recent-case"><strong>{{this.date}}</strong>: {{this.item.name}} opened from {{this.case.name}}</li>
-
-            {{/each}}
-        </ul>
-
-
+        <p id="balance" class="info-label">100$</p>
 
     </div>
+
+    <h2 class="section-title">Inventory</h2>
+
+    <div id="inventory-container">
+
+        <ul id="item-list">
+            <li class="item">
+                <img class="item-image" alt="item-image" src="https://steamcommunity-a.akamaihd.net/economy/image/rtOnLXYSD-u65eusOk-nO4hCpUCJo2NbCxc2U4Y51MLNQ5Hz3URG1UJcBu0sv2Ko-M1Zj0mvYmKzVOblh03iZzCDtDkHlikYyUNwwYoMAW_krs7YGizebuSsYw/360fx360f">
+                
+                <center><p class="item-name">AK-47 Tempered</p></center>
+                <center><p class="item-price">10$</p></center>
+            </li>
+            <li class="item">
+                <img class="item-image" alt="item-image" src="https://steamcommunity-a.akamaihd.net/economy/image/rtOnLXYSD-u65eusOk-nO4hCpUCJo2NbCxc2U4Y51MLNQ5Hz3URG1UJcBu0sv2Ko-M1Zj0mvYmKzVOblh03iZzCDtDkHlikYyUNwwYoMAW_krs7YGizebuSsYw/360fx360f">
+                
+                <center><p class="item-name">AK-47 Tempered</p></center>
+                <center><p class="item-price">10$</p></center>
+            </li>
+            <li class="item">
+                <img class="item-image" alt="item-image" src="https://steamcommunity-a.akamaihd.net/economy/image/rtOnLXYSD-u65eusOk-nO4hCpUCJo2NbCxc2U4Y51MLNQ5Hz3URG1UJcBu0sv2Ko-M1Zj0mvYmKzVOblh03iZzCDtDkHlikYyUNwwYoMAW_krs7YGizebuSsYw/360fx360f">
+                
+                <center><p class="item-name">AK-47 Tempered</p></center>
+                <center><p class="item-price">10$</p></center>
+            </li>
+            <li class="item">
+                <img class="item-image" alt="item-image" src="https://steamcommunity-a.akamaihd.net/economy/image/rtOnLXYSD-u65eusOk-nO4hCpUCJo2NbCxc2U4Y51MLNQ5Hz3URG1UJcBu0sv2Ko-M1Zj0mvYmKzVOblh03iZzCDtDkHlikYyUNwwYoMAW_krs7YGizebuSsYw/360fx360f">
+                
+                <center><p class="item-name">AK-47 Tempered</p></center>
+                <center><p class="item-price">10$</p></center>
+            </li>
+            <li class="item">
+                <img class="item-image" alt="item-image" src="https://steamcommunity-a.akamaihd.net/economy/image/rtOnLXYSD-u65eusOk-nO4hCpUCJo2NbCxc2U4Y51MLNQ5Hz3URG1UJcBu0sv2Ko-M1Zj0mvYmKzVOblh03iZzCDtDkHlikYyUNwwYoMAW_krs7YGizebuSsYw/360fx360f">
+                
+                <center><p class="item-name">AK-47 Tempered</p></center>
+                <center><p class="item-price">10$</p></center>
+            </li>
+            <li class="item">
+                <img class="item-image" alt="item-image" src="https://steamcommunity-a.akamaihd.net/economy/image/rtOnLXYSD-u65eusOk-nO4hCpUCJo2NbCxc2U4Y51MLNQ5Hz3URG1UJcBu0sv2Ko-M1Zj0mvYmKzVOblh03iZzCDtDkHlikYyUNwwYoMAW_krs7YGizebuSsYw/360fx360f">
+                
+                <center><p class="item-name">AK-47 Tempered</p></center>
+                <center><p class="item-price">10$</p></center>
+            </li>
+            <li class="item">
+                <img class="item-image" alt="item-image" src="https://steamcommunity-a.akamaihd.net/economy/image/rtOnLXYSD-u65eusOk-nO4hCpUCJo2NbCxc2U4Y51MLNQ5Hz3URG1UJcBu0sv2Ko-M1Zj0mvYmKzVOblh03iZzCDtDkHlikYyUNwwYoMAW_krs7YGizebuSsYw/360fx360f">
+                
+                <center><p class="item-name">AK-47 Tempered</p></center>
+                <center><p class="item-price">10$</p></center>
+            </li>
+            <li class="item">
+                <img class="item-image" alt="item-image" src="https://steamcommunity-a.akamaihd.net/economy/image/rtOnLXYSD-u65eusOk-nO4hCpUCJo2NbCxc2U4Y51MLNQ5Hz3URG1UJcBu0sv2Ko-M1Zj0mvYmKzVOblh03iZzCDtDkHlikYyUNwwYoMAW_krs7YGizebuSsYw/360fx360f">
+                
+                <center><p class="item-name">AK-47 Tempered</p></center>
+                <center><p class="item-price">10$</p></center>
+            </li>
+            <li class="item">
+                <img class="item-image" alt="item-image" src="https://steamcommunity-a.akamaihd.net/economy/image/rtOnLXYSD-u65eusOk-nO4hCpUCJo2NbCxc2U4Y51MLNQ5Hz3URG1UJcBu0sv2Ko-M1Zj0mvYmKzVOblh03iZzCDtDkHlikYyUNwwYoMAW_krs7YGizebuSsYw/360fx360f">
+                
+                <center><p class="item-name">AK-47 Tempered</p></center>
+                <center><p class="item-price">10$</p></center>
+            </li>
+            <li class="item">
+                <img class="item-image" alt="item-image" src="https://steamcommunity-a.akamaihd.net/economy/image/rtOnLXYSD-u65eusOk-nO4hCpUCJo2NbCxc2U4Y51MLNQ5Hz3URG1UJcBu0sv2Ko-M1Zj0mvYmKzVOblh03iZzCDtDkHlikYyUNwwYoMAW_krs7YGizebuSsYw/360fx360f">
+                
+                <center><p class="item-name">AK-47 Tempered</p></center>
+                <center><p class="item-price">10$</p></center>
+            </li>
+            <li class="item">
+                <img class="item-image" alt="item-image" src="https://steamcommunity-a.akamaihd.net/economy/image/rtOnLXYSD-u65eusOk-nO4hCpUCJo2NbCxc2U4Y51MLNQ5Hz3URG1UJcBu0sv2Ko-M1Zj0mvYmKzVOblh03iZzCDtDkHlikYyUNwwYoMAW_krs7YGizebuSsYw/360fx360f">
+                
+                <center><p class="item-name">AK-47 Tempered</p></center>
+                <center><p class="item-price">10$</p></center>
+            </li>
+        </ul>
+
+    </div>
+
+    <h2 class="section-title">History</h2>
+
+    <div id="history-container">
+
+        <ul id="history-list">
+
+            <li class="history">
+
+                <img alt="case-image" class="history-image" src="https://csgobros.com/wp-content/uploads/2017/12/csgo-case-opening-se.png">
+                <p class="history-name history-label">AK-Tempered</p>
+                
+                <p class="history-date history-label">2019-09-09</p>
+                <p class="history-price history-label">100$</p>
+
+                <p class="history-won history-label">Face Mask Tempered</p>
+
+            </li>
+            <li class="history">
+
+                <img alt="case-image" class="history-image" src="https://csgobros.com/wp-content/uploads/2017/12/csgo-case-opening-se.png">
+                <p class="history-name history-label">AK-Tempered</p>
+                
+                <p class="history-date history-label">2019-09-09</p>
+                <p class="history-price history-label">100$</p>
+
+                <p class="history-won history-label">Face Mask Tempered</p>
+
+            </li>
+        </ul>
+
+    </div>
+
 
 </body>
 </html>
