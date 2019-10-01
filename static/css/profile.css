@@ -1,0 +1,198 @@
+body {
+    background-color: #17202d;
+}
+
+#title{
+    font-size: 72px;
+    font-family: "Roboto Condensed";
+
+    color: white;
+
+    text-align: center;
+
+    margin-bottom: 5px;
+}
+
+#user-info-container{
+    display: block;
+
+    background-color: #0f131b;
+    
+    width: 1200px;
+    height: 148px;
+
+    margin: 0 auto;
+    margin-top: 20px;
+
+    border: 1px black solid;
+}
+
+#profile-image{
+    width: 128px;
+    height: 128px;
+
+    margin-top: 10px;
+    margin-left: 10px;
+
+    display: inline-block;
+
+}
+
+.info-label{
+    display: inline;
+
+    font-family: "Roboto Condensed";
+
+    margin-left: 10px;
+}
+
+#username{
+    position: absolute;
+
+    font-size: 36px;
+    margin-top: 10px;
+
+    color: white;
+}
+#steamid{
+    position: absolute;
+    color: lightgrey;
+
+    font-size: 12px;
+
+    margin-top: 52.5px;
+}
+#balance{
+    position: absolute;
+
+    margin-top: 118px;
+
+    color: goldenrod;
+    font-size: 22px;
+}
+
+.section-title{
+    color: white;
+    
+    font-size: 48px;
+    font-family: "Roboto Condensed";
+
+    text-align: center;
+
+    margin-bottom: 10px;
+}
+
+#inventory-container{
+    display: block;
+
+    background-color: #0f131b;
+    
+    width: 1350px;
+    height: auto;
+
+    margin: 0 auto;
+    margin-top: 20px;
+
+    border: 1px black solid;
+}
+.item{
+    /* float: left; */
+
+    width: 120px;
+    height: 160px;
+
+    background-color: #1a2331;  
+    
+    margin: 5px;    
+
+    display: inline-block;
+}
+.item-image{
+    height: 80px;
+    width: 100px;
+    
+    margin-left: 10px;
+    margin-top: 10px;
+
+}
+.item-name{
+    color: white;
+    font-family: "Roboto Condensed";
+
+    margin-bottom: 2px;
+    
+}
+.item-price{
+    color: red;
+    font-family: "Roboto Condensed"; 
+
+    margin-top: 2px;
+}
+
+#item-list{
+    list-style: none;
+    
+    
+    padding-left: 5px;
+    padding-right: 5px;
+   
+}
+#history-container{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#history-list{
+    list-style: none;
+    padding: 0;
+}
+
+.history{
+    display: block;
+
+    background-color: #1a2331;  
+    border: 1px black solid;
+
+    width: 100%;
+
+    margin-top: 5px;
+}
+.history-image{
+    display: inline-block;
+    width: 128px;
+
+    margin-left: 10px;
+
+    padding: 10px;
+
+}
+
+.history-label{
+    position: absolute;
+    display: inline;
+
+    font-size: "Roboto Condensed";
+}
+
+.history-name{
+    color: white;
+    font-size: 22px;
+}
+
+.history-date{
+    margin-top: 45px;
+    color: lightgrey;
+}
+
+.history-price{
+    color: red;
+    margin-top: 60px;
+}
+
+.history-won{
+    color: green;
+    font-size: 18px;
+    font-weight: 200;
+
+    margin-top: 80px;
+}
