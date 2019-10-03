@@ -15,15 +15,15 @@
 </head>
 <body>
     
-    {{> navigationbar   }}
+    {{> navigationbar }}
 
     <h1 id="title">Profile</h1>
 
     <div id="user-info-container">
         <img alt="user image" id="profile-image" src="https://66.media.tumblr.com/4e21bd4ab89adb28fb5007ce6966b81b/tumblr_p14agkHN211tu5h6io1_400.jpg">
 
-        <p id="username" class="info-label">Magistern</p>
-        <p id="steamid" class="info-label">76561198128942733</p>
+        <p id="username" class="info-label">{{profile.name}}</p>
+        <p id="steamid" class="info-label">{{profile.steamid}}</p>
 
         <p id="balance" class="info-label">100$</p>
 
@@ -34,12 +34,14 @@
     <div id="inventory-container">
 
         <ul id="item-list">
+            {{#each profile.inventory}}
             <li class="item">
-                <img class="item-image" alt="item-image" src="https://steamcommunity-a.akamaihd.net/economy/image/rtOnLXYSD-u65eusOk-nO4hCpUCJo2NbCxc2U4Y51MLNQ5Hz3URG1UJcBu0sv2Ko-M1Zj0mvYmKzVOblh03iZzCDtDkHlikYyUNwwYoMAW_krs7YGizebuSsYw/360fx360f">
+                <img class="item-image" alt="item-image" src="{{this.image}}">
                 
-                <center><p class="item-name">AK-47 Tempered</p></center>
-                <center><p class="item-price">10$</p></center>
+                <center><p class="item-name">{{this.name}}</p></center>
+                <center><p class="item-price">{{this.price}}</p></center>
             </li>
+            {{/each}}
         </ul>
 
     </div>
