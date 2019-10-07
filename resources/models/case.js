@@ -78,9 +78,9 @@ caseSchema.methods.open = function(user, cb){
 
                 if(err) console.log(err.message);
 
-                // CaseHistory.writeHistory(user.steamid, wonItem, currentCase, function(err, newHistory){
-                //     return cb(null, wonItem);
-                // });
+                CaseHistory.writeHistory(user.steamid, wonItem, currentCase, function(err, newHistory){
+                    return cb(null, wonItem);
+                });
                 
                 return cb(null, wonItem);
 

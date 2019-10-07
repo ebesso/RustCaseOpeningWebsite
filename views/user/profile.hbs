@@ -20,10 +20,10 @@
     <h1 id="title">Profile</h1>
 
     <div id="user-info-container">
-        <img alt="user image" id="profile-image" src="https://66.media.tumblr.com/4e21bd4ab89adb28fb5007ce6966b81b/tumblr_p14agkHN211tu5h6io1_400.jpg">
+        <img alt="user image" id="profile-image" src="https://66.media.tumblr.com/4e21bd4ab89adb28fb5007ce6966b81b/tumblr_p14agkHN211tu5h6io1_400.jpg" style="width: 128px; height: 128px;">
 
         <p id="username" class="info-label">{{profile.name}}</p>
-        <p id="steamid" class="info-label">{{profile.steamid}}</p>
+        <p id="steamid" class="info-label">{{profile.steamID}}</p>
 
         <p id="balance" class="info-label">{{getBalance user}}</p>
 
@@ -36,10 +36,10 @@
         <ul id="item-list">
             {{#each inventory}}
             <li class="item">
-                <img class="item-image" alt="item-image" src="{{this.image}}">
+                <img class="item-image" alt="item-image" src="{{this.image}}" >
                 
                 <center><p class="item-name">{{this.name}}</p></center>
-                <center><p class="item-price">{{this.price}}</p></center>
+                <center><p class="item-price">{{this.price}}$</p></center>
             </li>
             {{/each}}
         </ul>
@@ -50,30 +50,24 @@
 
     <div id="history-container">
 
+
         <ul id="history-list">
+    
+            {{#each history}}
 
             <li class="history">
 
-                <img alt="case-image" class="history-image" src="https://csgobros.com/wp-content/uploads/2017/12/csgo-case-opening-se.png">
-                <p class="history-name history-label">AK-Tempered</p>
+                <img alt="case-image" class="history-image" src="{{this.case.image}}">
+                <p class="history-name history-label">{{this.case.name}}</p>
                 
-                <p class="history-date history-label">2019-09-09</p>
-                <p class="history-price history-label">100$</p>
+                <p class="history-date history-label">{{this.date}}</p>
+                <p class="history-price history-label">{{this.case.price}}$</p>
 
-                <p class="history-won history-label">Face Mask Tempered</p>
+                <p class="history-won history-label">{{this.item.name}}</p>
 
             </li>
-            <li class="history">
 
-                <img alt="case-image" class="history-image" src="https://csgobros.com/wp-content/uploads/2017/12/csgo-case-opening-se.png">
-                <p class="history-name history-label">AK-Tempered</p>
-                
-                <p class="history-date history-label">2019-09-10</p>
-                <p class="history-price history-label">100$</p>
-
-                <p class="history-won history-label">Face Mask Tempered</p>
-
-            </li>
+            {{/each}}
         </ul>
 
     </div>
