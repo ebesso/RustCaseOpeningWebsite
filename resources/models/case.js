@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const User = require('./user');
 const Item = require('./item');
-const CaseHistory = require('./caseHistory');
+var CaseHistory = require('./caseHistory');
 
 const fs = require('fs');
 
@@ -78,11 +78,19 @@ caseSchema.methods.open = function(user, cb){
 
                 if(err) console.log(err.message);
 
-                CaseHistory.writeHistory(user.steamid, wonItem, currentCase, function(err, newHistory){
-                    return cb(null, wonItem);
+                var caseHistory = new CaseHistory({
+                    opener: user.steamid,
+                    date: new Date(),
+                    item: wonItem,
+                    case: currentCase   
                 });
-                
+
+                caseHistory.save(function(err, savedHistory){
+
+                });
+
                 return cb(null, wonItem);
+                
 
             });     
 
