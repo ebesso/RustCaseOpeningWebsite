@@ -30,7 +30,7 @@
 
             {{#each items}}
 
-            <li class="item" data-value="{{this.price}}" data-name="{{this.info.name}}">
+            <li class="item" data-value="{{this.price}}" data-id="{{this.info.id}}">
                 <img class="item-image" alt="item-image" src="{{this.info.image}}">
                 
                 <center><p class="item-name">{{this.info.name}}</p></center>
@@ -44,7 +44,7 @@
     </div>
 
     <div id="button-container">
-        <button class="pushy__btn pushy__btn--lg pushy__btn--red" id="open-button">Deposit</button>   
+        <button class="pushy__btn pushy__btn--lg pushy__btn--red" id="submit-button">Deposit</button>   
     </div>
 
 </body>

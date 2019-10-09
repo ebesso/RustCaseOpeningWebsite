@@ -41,7 +41,7 @@ userSchema.methods.getSteamInventory = function(cb){
 
                         inventory.push({
 
-                            info: info,
+                            info: item,
                             price: info.price
 
                         });
@@ -71,11 +71,13 @@ userSchema.methods.sendTradeOffer = function(sendItems, cb){
     this.getSteamInventory(function(items){
         items.forEach(function(item){
             if(sendItems.indexOf(item.info.id) > -1) {
+                console.log(item.info.market_hash_name);
                 offer.addTheirItem(item.info);
             }
         });
         offer.send(function(err, status){
-            Trade.createDepositOffer(offer.id, steamid, cb);
+            if(err)console.log(err.message);
+            else Trade.createDepositOffer(offer.id, steamid, cb);
         });    
     });
 

@@ -18,4 +18,20 @@ $(document).ready(function(){
 
     });
 
+    $('#submit-button').click(function(){
+
+        data = []
+
+        $('.item').each(function(index){
+            if($(this).hasClass('selected')) data.push($(this).attr('data-id'))
+        });
+
+
+
+        $.post('/user/deposit', {'items': data}, function(resp){
+            alert(resp);
+        });
+
+    });
+
 });

@@ -20,6 +20,7 @@ router.get('/user/deposit', function(req, res){
 
 router.post('/user/deposit', function(req, res){
 
+
     req.user[0].sendTradeOffer(req.body.items, function(err, newOffer){
         if(err) res.send(`Failed to send trade offer (${err.message})`);
         else res.send('Trade offer has been sent');
