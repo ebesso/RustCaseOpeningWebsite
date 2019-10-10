@@ -38,13 +38,16 @@ userSchema.methods.getSteamInventory = function(cb){
 
                     Item.findOne({name: item.market_hash_name}, function(err, info){
                         if(err) console.log(err.message);
+                        else {
+                            inventory.push({
 
-                        inventory.push({
+                                info: item,
+                                price: info.price,
+                                image: info.image
+    
+                            });                            
+                        }
 
-                            info: item,
-                            price: info.price
-
-                        });
 
                         if(inventory.length == items.length) resolve();
 
@@ -84,9 +87,7 @@ userSchema.methods.sendTradeOffer = function(sendItems, cb){
 }
 
 userSchema.methods.getInventory = function(cb){
-    
     this.model('User').findOne({steamid: this.steamid}).select('inventory').populate('inventory').exec(cb);
-    
 }
 
 userSchema.methods.getCaseHistory = function(cb){
