@@ -57,21 +57,6 @@ caseSchema.methods.open = function(user, cb){
 
             var wonItem = chanceList[Math.floor(Math.random() * chanceList.length)];
 
-            // if(!currentCase.offical){
-            //     User.findOne({steamid: currentCase.owner}, function(err, owner){
-
-            //         if(err){
-            //             console.log(err.message);
-            //             return cb(err, null);
-            //         }
-
-            //         var config = JSON.parse(fs.readFileSync(__dirname + '/../../config/cases.json'));
-            //         User.updateOne({steamid: owner.steamid}, {balance: owner.balance + this.price * config.ownerPercentage}, function(err, rawResponse){
-            //             console.log('Paid owner of case ' + this.price + config.ownerPercentage);
-            //         });
-            //     });
-            // }
-
             user.inventory.push(wonItem);
 
             user.save(function(err, savedUser){
