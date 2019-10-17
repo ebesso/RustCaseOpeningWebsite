@@ -5,7 +5,6 @@ var rolling = false;
 var itemThumbnails;
 var elementIndex = 70;
 
-
 $(document).ready(function(){
     $('#open-button').click(function(){
     
