@@ -32,7 +32,6 @@ $(document).ready(function(){
 
 });
 
-
 function init(){
     $('.item-thumbnail').first().stop(true);
     $('.item-thumbnail').first().css('margin-left', 0);
