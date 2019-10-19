@@ -157,7 +157,6 @@ caseSchema.statics.createOfficalCase = function(name, price, image, items, cb){
 
     });
 
-
 }
 
 const Case = mongoose.model('Case', caseSchema);
